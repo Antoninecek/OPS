@@ -6,6 +6,11 @@
 
 **[Odkaz na web s db, kam se ukladaji teploty](http://silenyprojekt.4fan.cz/zpracuj.php).**
 
+```
+email:teplota.projekt@gmail.com
+heslo:heslo123
+```
+
 ## TODO list
 - [x] Init commit
 - [x] Prestat se flakat
@@ -16,22 +21,14 @@
 ```
 crontab -e
 1/* * * * * /path/to/file/temperature.sh
-
-30/* * * * * /home/pi/projekt/OPS/email.sh
+```
 
 ```
-```
-email:teplota.projekt@gmail.com
-heslo:heslo123
+Email
+ssmtp, mailutils
 
-Instalace potřebných prográmků:
-
-sudo apt-get install ssmtp
-sudo apt-get install mailutils
-Úprava konfigurace ssmtp:
-
-nano /etc/ssmtp/ssmtp.conf
-
+# Konfigurace ssmtp:
+/etc/ssmtp/ssmtp.conf
 root=postmaster
 mailhub=smtp.gmail.com:587
 hostname=raspberrypi
@@ -40,15 +37,10 @@ AuthPass=heslo123
 FromLineOverride=YES
 UseSTARTTLS=YES
 
-
-nano /etc/ssmtp/revaliases
+/etc/ssmtp/revaliases
 pi:pi@raspberrypi:smtp.gmail.com:587
 ```
 
-Příkaz pro odeslání aktuální teploty na email:
-```
-echo "Aktuální teplota je: $(sudo pcsensor-c)°C" | mail -s "TEPLOTA" teplota.projekt@gmail.com
-```
 ## SOUBORY
 ```
 kompilovany pcsensor je ulozen v /bin pro spusteni odkudkoliv
