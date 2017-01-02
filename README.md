@@ -8,7 +8,7 @@
 
 ## TODO list
 - [x] Init commit
-- [ ] Prestat se flakat
+- [x] Prestat se flakat
 - [x] Zpracovani dat z teplotniho senzoru
 - [ ] Akce pro uzivatele (email, web)
 
