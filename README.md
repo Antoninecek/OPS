@@ -16,8 +16,39 @@
 ```
 crontab -e
 1/* * * * * /path/to/file/temperature.sh
+
+30/* * * * * /home/pi/projekt/OPS/email.sh
+
+```
+```
+email:teplota.projekt@gmail.com
+heslo:heslo123
+
+Instalace potřebných prográmků:
+
+sudo apt-get install ssmtp
+sudo apt-get install mailutils
+Úprava konfigurace ssmtp:
+
+nano /etc/ssmtp/ssmtp.conf
+
+root=postmaster
+mailhub=smtp.gmail.com:587
+hostname=raspberrypi
+AuthUser=teplota.projekt@gmail.com
+AuthPass=heslo123
+FromLineOverride=YES
+UseSTARTTLS=YES
+
+
+nano /etc/ssmtp/revaliases
+pi:pi@raspberrypi:smtp.gmail.com:587
 ```
 
+Příkaz pro odeslání aktuální teploty na email:
+```
+echo "Aktuální teplota je: $(sudo pcsensor-c)°C" | mail -s "TEPLOTA" teplota.projekt@gmail.com
+```
 ## SOUBORY
 ```
 kompilovany pcsensor je ulozen v /bin pro spusteni odkudkoliv
@@ -29,3 +60,5 @@ TEMPERATURE.SH - get temperature from usb sensor, run connect.py with temperatur
 CONNECT.PY - connect to the web, POST temperature into zpracuj.php
 
 ZPRACUJ.PHP - connect to the MySQL db, insert temperature with id and current date
+
+email.sh - Za podmínky že je teplota menší než 15 stupnů nebo nad 30 stupnu posle email s přesnou teplotou, tento skript se spouší každých 30 minut.
