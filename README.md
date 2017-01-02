@@ -15,7 +15,7 @@ heslo:heslo123
 - [x] Init commit
 - [x] Prestat se flakat
 - [x] Zpracovani dat z teplotniho senzoru
-- [ ] Akce pro uzivatele (email, web)
+- [x] Akce pro uzivatele (email, web)
 
 # PRINCIP FUNGOVANI
 ```
