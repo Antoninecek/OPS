@@ -54,3 +54,5 @@ CONNECT.PY - connect to the web, POST temperature into zpracuj.php
 ZPRACUJ.PHP - connect to the MySQL db, insert temperature with id and current date
 
 email.sh - Za podmínky že je teplota menší než 15 stupnů nebo nad 30 stupnu posle email s přesnou teplotou, tento skript se spouší každých 30 minut.
+
+# Dekujeme za jednicku
